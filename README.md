@@ -1,4 +1,4 @@
-# Alert Triage Agent
+# yaatb - Yet Another Alert Triage Bot
 
 An AI agent that investigates security alerts the way a Tier-2 SOC analyst would. It builds a timeline from logs, enriches IPs, hosts and users, rules out benign explanations, and reaches a verdict. It also proposes containment actions, and none of them run until a human approves.
 
