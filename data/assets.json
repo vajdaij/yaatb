@@ -1,0 +1,7 @@
+{
+  "vpn-gw-01":   {"owner": "network-eng", "criticality": "high", "env": "prod"},
+  "sso-portal":  {"owner": "iam", "criticality": "high", "env": "prod"},
+  "prod-db-07":  {"owner": "dba-team", "criticality": "critical", "env": "prod", "data": "customer PII"},
+  "wks-mlee-01": {"owner": "mlee", "criticality": "medium", "env": "corp"},
+  "jump-02":     {"owner": "infra", "criticality": "high", "env": "prod"}
+}

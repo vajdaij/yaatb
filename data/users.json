@@ -1,0 +1,7 @@
+{
+  "jdoe":       {"dept": "Finance", "privileged": false, "usual_locations": ["Denver, CO"], "manager": "kchen"},
+  "asmith":     {"dept": "Engineering", "privileged": false, "usual_locations": ["Denver, CO"], "vpn_user": true, "manager": "bwright"},
+  "svc_deploy": {"dept": "Service Account", "privileged": true, "interactive_login_expected": false, "owner": "platform-eng"},
+  "mlee":       {"dept": "Sales", "privileged": false, "usual_locations": ["Denver, CO"], "manager": "tgarcia"},
+  "rpatel":     {"dept": "Platform Engineering", "privileged": true, "usual_locations": ["Denver, CO"]}
+}
