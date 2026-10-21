@@ -1,5 +1,7 @@
 # yaatb - Yet Another Alert Triage Bot
 
+[![tests](https://github.com/vajdaij/yaatb/actions/workflows/tests.yml/badge.svg)](https://github.com/vajdaij/yaatb/actions/workflows/tests.yml)
+
 An AI agent that investigates security alerts the way a Tier-2 SOC analyst would. It builds a timeline from logs, enriches IPs, hosts and users, rules out benign explanations, and reaches a verdict. It also proposes containment actions, and none of them run until a human approves.
 
 It runs out of the box on sample data. Point it at Splunk to use real alerts and logs.
@@ -65,6 +67,8 @@ python -m unittest -v
 ```
 
 A scripted fake model drives the real agent loop and tools. The tests cover tool results being fed back to the model, the nudge when the model stops without a verdict, the step-limit fallback, and actions staying unexecuted.
+
+GitHub Actions runs these tests on Python 3.10, 3.12 and 3.13 for every push and pull request, and checks that the Docker image builds and starts. No secrets are used in CI.
 
 ## Using real Splunk (home lab)
 
