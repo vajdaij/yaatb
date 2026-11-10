@@ -8,5 +8,6 @@
   "kwalsh":     {"dept": "Database Administration", "privileged": true, "usual_locations": ["Denver, CO"], "manager": "rpatel"},
   "bwright":    {"dept": "Engineering", "privileged": false, "usual_locations": ["Denver, CO"], "usual_hours": "07:00-19:00 America/Denver", "mfa_devices": 1},
   "hd_tmorgan": {"dept": "IT Helpdesk", "privileged": false, "usual_locations": ["Denver, CO"], "permitted_group_changes": "non-privileged groups only", "manager": "rpatel"},
-  "jlopez":     {"dept": "Marketing", "privileged": false, "status": "disabled", "last_login": "2026-03-02", "note": "Left the company 2026-03; account pending deletion"}
+  "jlopez":     {"dept": "Marketing", "privileged": false, "status": "disabled", "last_login": "2026-03-02", "note": "Left the company 2026-03; account pending deletion"},
+  "svc_sccm":   {"dept": "Service Account", "privileged": true, "interactive_login_expected": false, "owner": "endpoint-eng", "purpose": "SCCM client actions: software deployment and compliance checks via CcmExec.exe"}
 }
