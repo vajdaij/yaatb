@@ -94,7 +94,8 @@ class Toolbox:
 
 
 ACTIONS = ["disable_account", "reset_credentials", "revoke_sessions", "block_ip",
-           "isolate_host", "remove_mailbox_rule", "escalate_to_ir"]
+           "isolate_host", "remove_mailbox_rule", "remove_mfa_device", "remove_group_membership",
+           "escalate_to_ir"]
 
 TOOL_SCHEMAS = [
     {"name": "search_logs",
