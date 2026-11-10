@@ -3,5 +3,9 @@
   "45.137.21.9":    {"reputation": "malicious", "tags": ["c2", "qakbot"], "geo": "NL"},
   "52.14.200.9":    {"reputation": "clean", "tags": ["aws-us-east-2", "corporate-vpn-egress"], "geo": "US-OH"},
   "10.10.1.50":     {"reputation": "internal", "tags": ["tenable-scanner"], "geo": "internal"},
-  "10.20.4.15":     {"reputation": "internal", "tags": ["jump-host:jump-02"], "geo": "internal"}
+  "10.20.4.15":     {"reputation": "internal", "tags": ["jump-host:jump-02"], "geo": "internal"},
+  "198.51.100.77":  {"reputation": "suspicious", "tags": ["first-seen-7d", "hosting-provider"], "geo": "US"},
+  "194.5.98.12":    {"reputation": "unknown", "tags": ["vps-hosting"], "geo": "BG"},
+  "102.89.34.211":  {"reputation": "suspicious", "tags": ["residential-proxy"], "geo": "NG"},
+  "10.30.9.77":     {"reputation": "internal", "tags": ["workstation:wks-tmorgan-01"], "geo": "internal"}
 }

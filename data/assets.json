@@ -1,7 +1,10 @@
 {
-  "vpn-gw-01":   {"owner": "network-eng", "criticality": "high", "env": "prod"},
-  "sso-portal":  {"owner": "iam", "criticality": "high", "env": "prod"},
-  "prod-db-07":  {"owner": "dba-team", "criticality": "critical", "env": "prod", "data": "customer PII"},
-  "wks-mlee-01": {"owner": "mlee", "criticality": "medium", "env": "corp"},
-  "jump-02":     {"owner": "infra", "criticality": "high", "env": "prod"}
+  "vpn-gw-01":      {"owner": "network-eng", "criticality": "high", "env": "prod"},
+  "sso-portal":     {"owner": "iam", "criticality": "high", "env": "prod"},
+  "prod-db-07":     {"owner": "dba-team", "criticality": "critical", "env": "prod", "data": "customer PII"},
+  "wks-mlee-01":    {"owner": "mlee", "criticality": "medium", "env": "corp"},
+  "jump-02":        {"owner": "infra", "criticality": "high", "env": "prod"},
+  "wks-tbrooks-01": {"owner": "tbrooks", "criticality": "medium", "env": "corp"},
+  "dc-01":          {"owner": "infra", "criticality": "critical", "env": "prod", "role": "Active Directory domain controller"},
+  "github-ent":     {"owner": "platform-eng", "criticality": "high", "env": "prod", "data": "source code"}
 }

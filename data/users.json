@@ -3,5 +3,10 @@
   "asmith":     {"dept": "Engineering", "privileged": false, "usual_locations": ["Denver, CO"], "vpn_user": true, "manager": "bwright"},
   "svc_deploy": {"dept": "Service Account", "privileged": true, "interactive_login_expected": false, "owner": "platform-eng"},
   "mlee":       {"dept": "Sales", "privileged": false, "usual_locations": ["Denver, CO"], "manager": "tgarcia"},
-  "rpatel":     {"dept": "Platform Engineering", "privileged": true, "usual_locations": ["Denver, CO"]}
+  "rpatel":     {"dept": "Platform Engineering", "privileged": true, "usual_locations": ["Denver, CO"]},
+  "tbrooks":    {"dept": "Human Resources", "privileged": false, "usual_locations": ["Denver, CO"], "manager": "kchen"},
+  "kwalsh":     {"dept": "Database Administration", "privileged": true, "usual_locations": ["Denver, CO"], "manager": "rpatel"},
+  "bwright":    {"dept": "Engineering", "privileged": false, "usual_locations": ["Denver, CO"], "usual_hours": "07:00-19:00 America/Denver", "mfa_devices": 1},
+  "hd_tmorgan": {"dept": "IT Helpdesk", "privileged": false, "usual_locations": ["Denver, CO"], "permitted_group_changes": "non-privileged groups only", "manager": "rpatel"},
+  "jlopez":     {"dept": "Marketing", "privileged": false, "status": "disabled", "last_login": "2026-03-02", "note": "Left the company 2026-03; account pending deletion"}
 }
