@@ -7,5 +7,7 @@
   "198.51.100.77":  {"reputation": "suspicious", "tags": ["first-seen-7d", "hosting-provider"], "geo": "US"},
   "194.5.98.12":    {"reputation": "unknown", "tags": ["vps-hosting"], "geo": "BG"},
   "102.89.34.211":  {"reputation": "suspicious", "tags": ["residential-proxy"], "geo": "NG"},
-  "10.30.9.77":     {"reputation": "internal", "tags": ["workstation:wks-tmorgan-01"], "geo": "internal"}
+  "10.30.9.77":     {"reputation": "internal", "tags": ["workstation:wks-tmorgan-01"], "geo": "internal"},
+  "10.30.2.91":     {"reputation": "internal", "tags": ["workstation:wks-rpatel-01"], "geo": "internal"},
+  "10.10.2.20":     {"reputation": "internal", "tags": ["sccm-distribution-point:sccm-dp-01"], "geo": "internal"}
 }

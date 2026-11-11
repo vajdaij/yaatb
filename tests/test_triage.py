@@ -4,6 +4,7 @@ import unittest
 from types import SimpleNamespace as NS
 
 from triage.agent import render_report, triage_alert
+from triage.score import load_expected, render_scorecard, score
 from triage.tools import TOOL_SCHEMAS, Toolbox
 
 ALERTS = {a["alert_id"]: a for a in json.load(open("data/alerts.json"))}
@@ -129,6 +130,78 @@ class ScenarioDataTests(unittest.TestCase):
         for action in ("remove_mfa_device", "remove_group_membership"):
             self.assertEqual(tb.call("propose_action", {"action": action, "target": "x", "justification": "y"})
                              ["recorded"], True)
+
+
+    def test_1011_sccm_inside_deployment_window(self):
+        a = ALERTS["ALR-1011"]
+        tb = Toolbox()
+        events = tb.search_logs(host=a["host"], around_time=a["time"], window_minutes=10)["events"]
+        self.assertTrue(events[0]["detail"].startswith("CcmExec.exe spawned powershell.exe"))
+        self.assertIn("Google Chrome", events[0]["decoded_command"])
+        self.assertTrue(tb.check_change_calendar(a["host"], a["time"])["approved_change_in_window"])
+        self.assertIn("sccm-distribution-point", tb.lookup_ip("10.10.2.20")["tags"][0])
+
+    def test_1011_encoded_command_matches_decoded(self):
+        import base64
+        e = Toolbox().search_logs(host="fin-wks-14")["events"][0]
+        enc = e["detail"].split("-EncodedCommand ")[1]
+        self.assertEqual(base64.b64decode(enc).decode("utf-16-le"), e["decoded_command"])
+
+    def test_1003_jump_host_pivot_leads_to_rpatel(self):
+        events = Toolbox().search_logs(host="jump-02", around_time=ALERTS["ALR-1003"]["time"], window_minutes=10)["events"]
+        details = " ".join(e.get("detail", "") for e in events)
+        self.assertIn("http.server 8000", details)  # serves the x.sh that svc_deploy pipes to bash
+        self.assertIn("svc_deploy@prod-db-07", details)
+
+    def test_hosts_in_events_have_asset_records(self):
+        # lab-pi-03 (ALR-1008) is missing on purpose. Every other host should resolve when the agent pivots.
+        with open("data/events.jsonl") as f:
+            hosts = {json.loads(line)["host"] for line in f if line.strip()}
+        self.assertEqual({h for h in hosts if "error" in Toolbox().get_asset(h)}, {"lab-pi-03"})
+
+
+class ScoreTests(unittest.TestCase):
+    def setUp(self):
+        self.expected = load_expected()
+
+    def result(self, alert_id, verdict, actions=(), tuning=None):
+        return {"alert_id": alert_id, "verdict": verdict, "severity": "high", "confidence": "high",
+                "tuning_suggestion": tuning, "actions": [{"action": a, "target": "x"} for a in actions]}
+
+    def test_every_sample_alert_has_an_expected_outcome(self):
+        self.assertEqual(set(self.expected), set(ALERTS))
+        for e in self.expected.values():
+            self.assertTrue(set(e["expected_actions"]) <= set(__import__("triage.tools").tools.ACTIONS))
+
+    def test_correct_run_passes(self):
+        card = score([self.result("ALR-1009", "true_positive", ["revoke_sessions", "remove_mfa_device"]),
+                      self.result("ALR-1011", "benign_true_positive", tuning="Exclude CcmExec.exe parent"),
+                      self.result("ALR-1008", "needs_human_review")], self.expected)
+        self.assertEqual(card["passed"], 3)
+        self.assertEqual(card["critical_misses"], [])
+        self.assertAlmostEqual(card["mean_action_recall"], 2 / 3)
+
+    def test_attack_called_benign_is_critical_miss(self):
+        card = score([self.result("ALR-1006", "false_positive")], self.expected)
+        self.assertEqual(card["critical_misses"], ["ALR-1006"])
+        self.assertIn("CRITICAL MISS", render_scorecard(card))
+
+    def test_containment_on_benign_or_thin_evidence_fails(self):
+        card = score([self.result("ALR-1008", "needs_human_review", ["block_ip"]),
+                      self.result("ALR-1011", "false_positive", ["isolate_host"], tuning="x")], self.expected)
+        self.assertEqual(card["passed"], 0)
+        self.assertEqual(card["critical_misses"], [])
+
+    def test_missing_tuning_and_wrong_actions_fail(self):
+        card = score([self.result("ALR-1005", "false_positive"),
+                      self.result("ALR-1010", "true_positive", ["block_ip"])], self.expected)
+        self.assertEqual(card["passed"], 0)
+        self.assertIn("tuning", card["rows"][0]["problems"][0])
+        self.assertEqual(card["rows"][1]["action_recall"], 0)
+
+    def test_unlabeled_alerts_are_reported_not_scored(self):
+        card = score([self.result("SPLUNK-77", "true_positive")], self.expected)
+        self.assertEqual((card["scored"], card["unscored"]), (0, ["SPLUNK-77"]))
 
 
 class LoopTests(unittest.TestCase):

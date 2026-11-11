@@ -18,5 +18,7 @@
   {"alert_id": "ALR-1009", "rule": "Multiple MFA Push Denials", "time": "2026-09-28T08:53:12Z",
    "user": "bwright", "src_ip": "102.89.34.211", "host": "sso-portal", "details": "14 MFA push denials in 11 minutes, then 1 approval"},
   {"alert_id": "ALR-1010", "rule": "Member Added to Privileged Group", "time": "2026-09-28T23:18:40Z",
-   "user": "hd_tmorgan", "src_ip": "10.30.9.77", "host": "dc-01", "details": "jlopez added to Domain Admins by hd_tmorgan"}
+   "user": "hd_tmorgan", "src_ip": "10.30.9.77", "host": "dc-01", "details": "jlopez added to Domain Admins by hd_tmorgan"},
+  {"alert_id": "ALR-1011", "rule": "Encoded PowerShell Command", "time": "2026-10-02T16:00:05Z",
+   "user": "svc_sccm", "src_ip": "10.40.3.58", "host": "fin-wks-14", "details": "powershell.exe -ExecutionPolicy Bypass -EncodedCommand (base64, 540 chars)"}
 ]

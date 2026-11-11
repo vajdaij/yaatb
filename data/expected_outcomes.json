@@ -1,0 +1,13 @@
+{
+  "ALR-1001": {"verdicts": ["true_positive"], "expected_actions": ["disable_account", "revoke_sessions", "remove_mailbox_rule"]},
+  "ALR-1002": {"verdicts": ["benign_true_positive", "false_positive"], "expected_actions": []},
+  "ALR-1003": {"verdicts": ["true_positive"], "expected_actions": ["escalate_to_ir"]},
+  "ALR-1004": {"verdicts": ["true_positive"], "expected_actions": ["isolate_host"]},
+  "ALR-1005": {"verdicts": ["false_positive"], "expected_actions": [], "tuning_expected": true},
+  "ALR-1006": {"verdicts": ["true_positive"], "expected_actions": ["isolate_host"]},
+  "ALR-1007": {"verdicts": ["true_positive"], "expected_actions": ["block_ip", "escalate_to_ir"]},
+  "ALR-1008": {"verdicts": ["needs_human_review"], "expected_actions": []},
+  "ALR-1009": {"verdicts": ["true_positive"], "expected_actions": ["revoke_sessions", "remove_mfa_device", "reset_credentials"]},
+  "ALR-1010": {"verdicts": ["true_positive"], "expected_actions": ["remove_group_membership", "disable_account", "escalate_to_ir"]},
+  "ALR-1011": {"verdicts": ["benign_true_positive", "false_positive"], "expected_actions": [], "tuning_expected": true}
+}
